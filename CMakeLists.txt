@@ -6,6 +6,7 @@ else()
  project(02_homework VERSION 0.0.3)
 endif()
 
+
 find_package(GTest REQUIRED)
 find_package(Threads)
 include_directories(${GTEST_INCLUDE_DIRS})
