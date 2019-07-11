@@ -16,7 +16,7 @@ add_library(library lib.cpp)
 add_executable(gtests tests.cpp)
 
 set_target_properties(ip_filter library gtests PROPERTIES
-    CXX_STANDARD 14
+    CXX_STANDARD 17
     CXX_STANDARD_REQUIRED ON
 )
 target_include_directories(ip_filter PRIVATE "${CMAKE_BINARY_DIR}")

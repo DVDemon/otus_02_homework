@@ -16,7 +16,7 @@ void print_vector(const std::vector<T> vec){
   for(auto s:vec){
       std::cout << s << std::endl;
   }
-};
+}
 
 template <class T,size_t index,size_t size> constexpr bool compare_tuple(T& lhv,T& rhv,bool less){
     if (std::get<size-index>(lhv) == std::get<size-index>(rhv)) {
@@ -26,7 +26,7 @@ template <class T,size_t index,size_t size> constexpr bool compare_tuple(T& lhv,
 
    if(less) return (std::get<size-index>(lhv) < std::get<size-index>(rhv));
      else   return (std::get<size-index>(lhv) > std::get<size-index>(rhv));
-};
+}
 
 std::vector<std::string>    read_from_stream();
 std::vector<ip_type>        vector_to_ip(std::vector<std::string> source);
