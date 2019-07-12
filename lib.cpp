@@ -1,7 +1,6 @@
 #include "lib.h"
 
-#include <iterator>
-#include <algorithm>
+
 
 std::vector<std::string> read_from_stream(){
     std::istream_iterator<std::string> eos;

@@ -5,6 +5,8 @@
 #include <string>
 #include <iostream>
 #include <tuple>
+#include <iterator>
+#include <algorithm>
 
 #define UNUSED(variable)  (void)variable
 using ip_type = std::tuple<size_t,size_t,size_t,size_t>;
@@ -51,7 +53,7 @@ template <class T,size_t index,size_t size> constexpr
 
 
 
-
+// helper functions
 
 std::vector<std::string>    read_from_stream();
 std::vector<ip_type>        vector_to_ip(std::vector<std::string> source);
