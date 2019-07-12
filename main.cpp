@@ -5,11 +5,12 @@ int main(int argc, char* argv[]){
  using vector_type = decltype(vector_ip);
  vector_type vector_ip_filter;
 
+
  //Sorting addresses
  std::sort(vector_ip.begin(),vector_ip.end(),
             [](auto lhv,auto rhv) {
                  using tuple_type  = decltype(lhv);
-                 return compare_tuple<tuple_type,std::tuple_size<tuple_type>::value-1,std::tuple_size<tuple_type>::value-1>(lhv,rhv,false);
+                 return compare_tuple_sf<tuple_type,std::tuple_size<tuple_type>::value-1,std::tuple_size<tuple_type>::value-1>(lhv,rhv,false);
                 });
  print_vector(vector_ip);
  

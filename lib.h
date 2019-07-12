@@ -18,6 +18,8 @@ void print_vector(const std::vector<T> vec){
   }
 }
 
+/* 
+// comapre with if constexp - not working in travis
 template <class T,size_t index,size_t size> constexpr bool compare_tuple(T& lhv,T& rhv,bool less){
     if (std::get<size-index>(lhv) == std::get<size-index>(rhv)) {
         if constexpr (index>0) return compare_tuple<T,index-1,size>(lhv,rhv,less);
@@ -27,6 +29,29 @@ template <class T,size_t index,size_t size> constexpr bool compare_tuple(T& lhv,
    if(less) return (std::get<size-index>(lhv) < std::get<size-index>(rhv));
      else   return (std::get<size-index>(lhv) > std::get<size-index>(rhv));
 }
+*/
+
+// compare tuple with SFINAE :-(
+
+template <class T,size_t index,size_t size> constexpr 
+ typename std::enable_if<(index==0),bool>::type compare_tuple_sf(T& lhv,T& rhv,bool less){
+   if(less) return (std::get<size-index>(lhv) < std::get<size-index>(rhv));
+     else   return (std::get<size-index>(lhv) > std::get<size-index>(rhv));
+}
+
+template <class T,size_t index,size_t size> constexpr 
+ typename std::enable_if<(index>0),bool>::type compare_tuple_sf(T& lhv,T& rhv,bool less){
+    if (std::get<size-index>(lhv) == std::get<size-index>(rhv)) {
+        return compare_tuple_sf<T,index-1,size>(lhv,rhv,less);
+    }
+
+   if(less) return (std::get<size-index>(lhv) < std::get<size-index>(rhv));
+     else   return (std::get<size-index>(lhv) > std::get<size-index>(rhv));
+}
+
+
+
+
 
 std::vector<std::string>    read_from_stream();
 std::vector<ip_type>        vector_to_ip(std::vector<std::string> source);
