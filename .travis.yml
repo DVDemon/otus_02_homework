@@ -19,7 +19,7 @@ before_install:
   - sudo apt-get update -qq
 install: 
   # C++17
-  - sudo apt-get install -qq g++-7
+  - sudo apt-get install -qq g++-9
   - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 90
 script:
 - cmake .
