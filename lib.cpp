@@ -3,13 +3,9 @@
 
 
 std::vector<std::string> read_from_stream(){
-    std::istream_iterator<std::string> eos;
-    std::istream_iterator<std::string> iit(std::cin);
     std::vector<std::string> result;
-    std::insert_iterator<std::vector<std::string>> insert_it(result,result.begin());
-
-    std::copy(iit,eos,insert_it);
-
+    for(std::string line; std::getline(std::cin, line);)
+            result.push_back(line.substr(0,line.find('\t')));
     return result;
 }
 
